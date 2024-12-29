@@ -16,6 +16,7 @@
 #define CH340_PID                  (0x7522)
 #define CH340_PID_1                (0x7523)
 #define CH341_PID                  (0x5523)
+#define CH343_PID                  (0x55D3)
 
 namespace esp_usb {
 class CH34x : public CdcAcmDevice {
@@ -54,7 +55,7 @@ public:
 
     // List of supported VIDs and PIDs
     static constexpr uint16_t vid = NANJING_QINHENG_MICROE_VID;
-    static constexpr std::array<uint16_t, 3> pids = {CH340_PID, CH340_PID_1, CH341_PID};
+    static constexpr std::array<uint16_t, 4> pids = {CH340_PID, CH340_PID_1, CH341_PID, CH343_PID};
 
 private:
     const uint8_t intf;
