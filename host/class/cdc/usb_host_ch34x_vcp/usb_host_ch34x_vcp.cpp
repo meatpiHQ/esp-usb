@@ -66,9 +66,9 @@ static const char *TAG = "CH34X";
 
 namespace esp_usb {
 CH34x::CH34x(uint16_t pid, const cdc_acm_host_device_config_t *dev_config, uint8_t interface_idx)
-    : intf(interface_idx)
+    : intf(pid == CH343_PID ? 1 : interface_idx)
 {
-    const esp_err_t err = this->open_vendor_specific(vid, pid, 1, dev_config);
+    const esp_err_t err = this->open_vendor_specific(vid, pid, this->intf, dev_config);
     if (err != ESP_OK) {
         throw (err);
     }
